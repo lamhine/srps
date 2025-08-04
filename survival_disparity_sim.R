@@ -1,10 +1,5 @@
-# Load packages
-library(tidyverse)
-library(brms)
-library(mice)
-library(tidybayes)
-library(posterior)
-library(ggplot2)
+# Load setup.R
+source(here::here("setup.R"))
 
 set.seed(2025)
 
@@ -37,7 +32,11 @@ sim_data <- sim_data %>%
     insured = ifelse(runif(n) < 0.05, NA, as.character(insured)),
     married = ifelse(runif(n) < 0.05, NA, as.character(married))
   ) %>%
-  mutate(across(c(sex, insured, married), ~factor(.x, levels = c("Yes", "No", "Male", "Female"))[1:2]))
+  mutate(
+    sex     = factor(sex, levels = c("Male", "Female")),
+    insured = factor(insured, levels = c("Yes", "No")),
+    married = factor(married, levels = c("Yes", "No"))
+  )
 
 # Simulate a city-level policy index
 city_policy <- tibble(
@@ -100,7 +99,7 @@ brms_model <- brm_multiple(
   control = list(adapt_delta = 0.95)
 )
 
-saveRDS(brms_model, "model_black_white_survival.rds")
+saveRDS(brms_model, file.path(results_dir, "model_black_white_survival.rds"))
 
 # -----------------------------
 # Predict and Estimate Disparity
@@ -147,7 +146,7 @@ disparity_summary <- pred_draws_wide %>%
     .groups = "drop"
   )
 
-saveRDS(disparity_summary, "disparity_black_white_over_policy.rds")
+saveRDS(disparity_summary, file.path(results_dir, "disparity_black_white_over_policy.rds"))
 
 # -----------------------------
 # Visualize Disparity
@@ -164,7 +163,7 @@ ggplot(disparity_summary, aes(x = policy_index, y = mean_diff)) +
   ) +
   theme_minimal()
 
-ggsave("plot_black_white_disparity.png", width = 7, height = 5)
+ggsave(file.path(results_dir, "plot_black_white_disparity.png"), width = 7, height = 5)
 
 # -----------------------------
 # Save Posterior Fixed Effects

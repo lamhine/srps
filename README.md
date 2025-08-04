@@ -26,6 +26,15 @@ This script runs a Bayesian logistic regression to estimate **Black–White disp
    - `table2_posterior_effects.csv` = model coefficients
 
 ---
+## Results Summary
+The figure below shows the posterior mean difference in predicted 2-year survival between Black and White individuals across a range of city-level policy index values.
+In this simulated example, Black individuals have lower predicted survival probabilities than White individuals across all policy index values. As the policy index increases (representing more supportive policy environments), the disparity narrows but does not disappear. The shaded band shows the 95% credible interval for the difference.
+
+This output was generated from simulated data. 
+
+![](03_results/plot_black_white_disparity.png)
+
+---
 
 ## To do to replace the simulated data:
 
