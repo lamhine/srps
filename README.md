@@ -14,6 +14,9 @@ This script runs a Bayesian logistic regression to estimate Black–White dispar
    - Key predictors: `race`, `policy_index`, and their interaction
    - Covariates: `age`, `sex`, `insured`, `married`
    - Random intercept for `city_id`
+   - Priors: weakly informative priors used to regularize estimates
+      * `normal(0, 1.5)` for fixed effects and intercept
+      * `exponential(1)` for city-level variation
 
 4. **Predicts survival probability** across a range of policy index values, separately for Black and White adults.
 
