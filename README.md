@@ -1,10 +1,10 @@
 # README: Survival Disparities Model (Black vs White)
 
-This script runs a Bayesian logistic regression to estimate **Black–White disparities in 2-year survival** across different levels of a **city-level policy index**.
+This script runs a Bayesian logistic regression to estimate Black–White disparities in 2-year survival across different levels of a city-level policy index.
 
 ## What the code does
 
-1. **Simulates example data** so you can see the structure and expected variables.  
+1. **Simulates example data** to demonstrate the structure and expected variables.  
    (We'll eventually replace this with the real CCR dataset.)
 
 2. **Imputes missing data** using `mice`.
@@ -36,7 +36,7 @@ This output was generated from simulated data.
 
 ---
 
-## To do to replace the simulated data:
+## To run the analysis with real instead of simulated data:
 
 In the script, find this line:
 
@@ -59,6 +59,6 @@ Uncomment and replace it with the actual data. The dataset should have the follo
 
 ### Notes
 
-- `policy_index` should be **city-level**, but included in your person-level dataset (i.e., merged in already). I will provide this once it's done. 
-- Make sure all categorical variables are coded as **factors**.
+- `policy_index` should be **city-level**, but included (i.e., merged in already) in the person-level dataset. I will provide this once it's done. 
+- Make sure all categorical variables are coded as factors.
 
