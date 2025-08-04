@@ -53,6 +53,3 @@ Uncomment and replace it with the actual data. The dataset should have the follo
 - `policy_index` should be **city-level**, but included in your person-level dataset (i.e., merged in already). I will provide this once it's done. 
 - Make sure all categorical variables are coded as **factors**.
 
----
-
-Let me know if you want to change the model, add more races, or customize the figure. Otherwise, once your data is loaded correctly, just run the script from top to bottom.
